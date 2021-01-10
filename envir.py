@@ -77,6 +77,12 @@ class Game:
             if self.ballPosY + self.ballRad >= self.padPosY:
                 self.pad_coll()
 
+        # Gives reward of 1 for each frame where we are moving towards the ball
+        if abs(self.padPosX + self.padWidth / 2 + self.padVel - self.ballPosX) <= abs(
+                self.padPosX + self.padWidth / 2 - self.ballPosX):
+            if self.reward == 0:
+                self.reward = 1
+                
     def pad_coll(self):
         self.ballVelY *= -1
         self.point += 1
