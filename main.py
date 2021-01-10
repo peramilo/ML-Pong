@@ -21,7 +21,7 @@ state_history = []
 state_next_history = []
 done_history = []
 reward_history = []
-update_after_actions = 4  # Specifies how often to update our model.
+update_after_actions = 5  # Specifies how often to update our model.
 update_target_model = 10000
 
 
