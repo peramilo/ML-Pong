@@ -15,5 +15,12 @@ the bottom wall. Only possible actions are moving the paddle either left or righ
 Model used consists of 1 hidden layer, together with an input and output layer. 
 Input consists of position of paddle's center and x and y coordinates of the ball.
 
+Reward is given when the ball bounces of the paddle, and negative points are given
+on lost game.
+
+Small reward is also given for each frame we are moving towards the ball.
+This drastically improved learning process, though it does train the, but isn't really ideal since it rewards
+behaviour that isn't necessarily optimal, since there is no need for paddle to constantly be under the ball.
+
 TensorFlow and Keras modules were used to create and train deep learning model.
 pygame module is used to display the attempts on the screen.
