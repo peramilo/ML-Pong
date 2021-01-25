@@ -15,27 +15,30 @@ epsilon_decay = 0.995
 batch_size = 32
 episode_reward = 0
 episode_reward_history = []
-point_history = []      # Histories hold information from previous frames, decisions
+# Histories hold information from previous frames, decisions
+point_history = []      
 action_history = []
 state_history = []
 state_next_history = []
 done_history = []
 reward_history = []
-update_after_actions = 5  # Specifies how often to update our model.
+# Specifies how often to update our model.
+update_after_actions = 5  
 update_target_model = 10000
 
 
 def create_model():
+    # 1 hidden layer, 128 nodes in size
     inputs = layers.Input(shape=(3,))
     layer1 = layers.Dense(128, activation="relu")(inputs)
     action = layers.Dense(2, activation="softmax")(layer1)
-
     return keras.Model(inputs=inputs, outputs=action)
 
 
 model = create_model()  # This is the main, decision making model
 model.summary()
 model_target = create_model()  # Target model, helps with learning
+# Adam will be optimizer used, with Huber as a loss function
 optimizer = keras.optimizers.Adam(learning_rate=0.00025, clipnorm=1.0)
 loss_function = keras.losses.Huber()
 episode_number = 0
