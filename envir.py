@@ -56,10 +56,10 @@ class Game:
     def action(self, x):
         if x == 1:
             self.padVel += 4
-        else:
-            if x == 0:
-                self.padVel -= 4
-
+        elif x == 0:
+             self.padVel -= 4
+                
+    # Registers and handles collisions
     def coll(self):
         if self.ballPosY - self.ballRad <= 0:
             self.ballPosY = self.ballRad
@@ -83,12 +83,14 @@ class Game:
             if self.reward == 0:
                 self.reward = 1
                 
+    # Handles pad collisions            
     def pad_coll(self):
         self.ballVelY *= -1
         self.point += 1
         self.reward = 200
         self.ballPosY = self.padPosY - self.ballRad
-
+    
+    # Returns state of the game
     def state(self):
         x = (self.ballPosX / self.screenWidth, self.ballPosY / self.screenHeight,
              (self.padPosX + self.padWidth / 2) / self.screenWidth)
@@ -96,6 +98,7 @@ class Game:
 
     def reset(self):
         self.__init__()
+        # Initial X velocity is choosen from 4 possible values
         self.ballVelX = int(np.random.choice((-4, -3, 3, 4), 1))
         self.ballVelY = 4
         self.done = False
