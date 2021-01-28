@@ -110,6 +110,7 @@ while True:
 
         if x.is_done():
             break
+            
     episode_number += 1
     episode_reward_history.append(episode_reward)
     point_history.append(x.point)
