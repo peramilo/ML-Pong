@@ -19,7 +19,7 @@ Reward is given when the ball bounces of the paddle, and negative points are giv
 on lost game.
 
 Small reward is also given for each frame we are moving towards the ball.
-This drastically improved learning process, though it does train the, but isn't really ideal since it rewards
+This drastically improved learning process, but isn't really ideal since it rewards
 behaviour that isn't necessarily optimal, since there is no need for paddle to constantly be under the ball.
 
 TensorFlow and Keras modules were used to create and train deep learning model.
